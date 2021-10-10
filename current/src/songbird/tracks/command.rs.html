@@ -55,8 +55,7 @@
 <span id="55">55</span>
 <span id="56">56</span>
 <span id="57">57</span>
-</pre><pre class="rust">
-<span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::events::EventData</span>;
 <span class="kw">use</span> <span class="ident">flume::Sender</span>;
 <span class="kw">use</span> <span class="ident">std::time::Duration</span>;
@@ -93,27 +92,27 @@
 }
 
 <span class="kw">impl</span> <span class="ident">std::fmt::Debug</span> <span class="kw">for</span> <span class="ident">TrackCommand</span> {
-    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">std::fmt::Error</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std::fmt::Formatter</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">std::fmt::Error</span><span class="op">&gt;</span> {
         <span class="kw">use</span> <span class="ident">TrackCommand</span>::<span class="kw-2">*</span>;
         <span class="macro">write!</span>(
             <span class="ident">f</span>,
             <span class="string">&quot;TrackCommand::{}&quot;</span>,
             <span class="kw">match</span> <span class="self">self</span> {
-                <span class="ident">Play</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Play&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">Pause</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Pause&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">Stop</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Stop&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">Volume</span>(<span class="ident">vol</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;Volume({})&quot;</span>, <span class="ident">vol</span>),
-                <span class="ident">Seek</span>(<span class="ident">d</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;Seek({:?})&quot;</span>, <span class="ident">d</span>),
-                <span class="ident">AddEvent</span>(<span class="ident">evt</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;AddEvent({:?})&quot;</span>, <span class="ident">evt</span>),
-                <span class="ident">Do</span>(<span class="ident">_f</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;Do([function])&quot;</span>.<span class="ident">to_string</span>(),
-                <span class="ident">Request</span>(<span class="ident">tx</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;Request({:?})&quot;</span>, <span class="ident">tx</span>),
-                <span class="ident">Loop</span>(<span class="ident">loops</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">format!</span>(<span class="string">&quot;Loop({:?})&quot;</span>, <span class="ident">loops</span>),
-                <span class="ident">MakePlayable</span> <span class="op">=</span><span class="op">&gt;</span> <span class="string">&quot;MakePlayable&quot;</span>.<span class="ident">to_string</span>(),
+                <span class="ident">Play</span> =&gt; <span class="string">&quot;Play&quot;</span>.<span class="ident">to_string</span>(),
+                <span class="ident">Pause</span> =&gt; <span class="string">&quot;Pause&quot;</span>.<span class="ident">to_string</span>(),
+                <span class="ident">Stop</span> =&gt; <span class="string">&quot;Stop&quot;</span>.<span class="ident">to_string</span>(),
+                <span class="ident">Volume</span>(<span class="ident">vol</span>) =&gt; <span class="macro">format!</span>(<span class="string">&quot;Volume({})&quot;</span>, <span class="ident">vol</span>),
+                <span class="ident">Seek</span>(<span class="ident">d</span>) =&gt; <span class="macro">format!</span>(<span class="string">&quot;Seek({:?})&quot;</span>, <span class="ident">d</span>),
+                <span class="ident">AddEvent</span>(<span class="ident">evt</span>) =&gt; <span class="macro">format!</span>(<span class="string">&quot;AddEvent({:?})&quot;</span>, <span class="ident">evt</span>),
+                <span class="ident">Do</span>(<span class="ident">_f</span>) =&gt; <span class="string">&quot;Do([function])&quot;</span>.<span class="ident">to_string</span>(),
+                <span class="ident">Request</span>(<span class="ident">tx</span>) =&gt; <span class="macro">format!</span>(<span class="string">&quot;Request({:?})&quot;</span>, <span class="ident">tx</span>),
+                <span class="ident">Loop</span>(<span class="ident">loops</span>) =&gt; <span class="macro">format!</span>(<span class="string">&quot;Loop({:?})&quot;</span>, <span class="ident">loops</span>),
+                <span class="ident">MakePlayable</span> =&gt; <span class="string">&quot;MakePlayable&quot;</span>.<span class="ident">to_string</span>(),
             }
         )
     }
 }
-</pre></div>
+</code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="songbird" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>
     <script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script>
 </body></html>
